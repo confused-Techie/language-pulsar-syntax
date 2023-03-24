@@ -1,0 +1,148 @@
+Language Pulsar Syntax
+
+# ######################################################################
+# This file demonstrates, with the help of `language-pulsar-syntax`
+# how different syntax scopes will look on different Pulsar themes.
+# Each properties name matches that of it's scope, with that scope applied.
+# After each property there is a {{ ... }} where you can add text to see exactly
+# how your text would look when given that scope.
+# This can also be helpful when creating a theme to ensure no scope has been missed.
+# All scope values based on the original TextMate Documentation:
+# https://macromates.com/manual/en/language_grammars#naming_conventions
+# ######################################################################
+
+comment {{  }} # For comments
+
+comment.line {{  }} # Line comments
+
+comment.line.double-slash {{  }} # // comment
+
+comment.line.double-dash {{  }} # -- comment
+
+comment.line.number-sign {{  }} # # comment
+
+comment.line.percentage {{  }} # % comment
+
+comment.block {{  }} # Multi-line comments like /* ... */ or <!-- ... -->
+
+comment.block.documentation {{  }} # Embedded documentation
+
+constant {{  }} # Various forms of constants.
+
+constant.numeric {{  }} # Those which represent numbers, e.g. 42, 1.3f, 0x4AB1U
+
+constant.character {{  }} # Those which represent characters, e.g. &lt;, \e, \031
+
+constant.character.escape {{  }} # Escape sequences like \e would be constant.character.escape
+
+constant.language {{  }} # Constants (generally) provided by the language which
+                         # are “special” like true, false, nil, YES, NO, etc
+
+constant.other {{  }} # Other constants, e.g. colors in CSS
+
+entity {{  }} # An entity refers to a larger part of the document
+
+entity.name {{  }} # We are naming the larger entity
+
+entity.name.function {{  }} # The name of a function
+
+entity.name.type {{  }} # The name of a type declaration or class
+
+entity.name.tag {{  }} # A tag name
+
+entity.name.section {{  }} # The name is the name of a section/heading
+
+entity.other {{  }} # Other entities
+
+entity.other.inherited-class {{  }} # The superclass/baseclass name
+
+entity.other.attribute-name {{  }} # The name of an attribute (mainly in tags)
+
+invalid {{  }} # Stuff which is 'invalid'
+
+invalid.illegal {{  }} # Illegal values
+
+invalid.deprecated {{  }} # For deprecated stuff
+
+keyword {{  }} # Keywords (when these do not fall into toehr groups)
+
+keyword.control {{  }} # Mainly related to flow control like continue, while, return, etc
+
+keyword.operator {{  }} # Operators can either be textual (e.g. or) or be characters
+
+keyword.other {{  }} # Other keywords
+
+markup {{  }} # This is for markup languages and generally applies to larger subsets of the text.
+
+markup.underline {{  }} # Underlined text
+
+markup.underline.link {{  }}  # This is for links
+
+markup.bold {{  }} # Bold text
+
+markup.heading {{  }} # A section header. Optionally provide the heading level as
+                      # the next element, for example markup.heading.2
+
+markup.italic {{  }} # Italic Text
+
+markup.list {{  }} # List items
+
+markup.list.numbered {{  }} # Numbered list items
+
+markup.list.unnumbered {{  }}  # Unnumbered list items
+
+markup.quote {{  }} # Quoted (sometimes block quoted) text
+
+markup.raw {{  }} # Text which is verbatim
+
+markup.other {{  }} # Other markup constructs
+
+meta {{  }} # The meta scope is generally used to markup larger parts of the document.
+
+storage {{  }} # Things relating to storage
+
+storage.type {{  }} # The type of something, class, function, int, var, etc
+
+storage.modifier {{  }} # A storage modifier like static, final, abstract, etc
+
+string {{  }} # Strings
+
+string.quoted {{  }} # Quoted strings
+
+string.quoted.single {{  }} # Single quoted strings: 'foo'
+
+string.quoted.double {{  }} # Double quoted strings: "foo"
+
+string.quoted.triple {{  }} # Triple quoted strings: """Python"""
+
+string.quoted.other {{  }} # Other types of quoted: $'shell', $s{...}
+
+string.unquoted {{  }} # For things like here-docs and here-strings
+
+string.interpolated {{  }} # Strings which are "evaluated": `date`, $(pwd)
+
+string.regexp {{  }} # Regular expressions: /(\w+)/
+
+string.other {{  }} # Other types of strings (Should rarely be used)
+
+support {{  }} # Things provided by a framework or library should be below support
+
+support.function {{  }} # Functions provided by the framework/library
+
+support.class {{  }} # When the framework/library provides classes
+
+support.type {{  }} # Types provided by the framework/library
+
+support.constant {{  }} # Constants (magic values) provided by the framework/library
+
+support.variable {{  }} # Variables provided by the framework/library
+
+support.other {{  }} # The above shoul dbe exhaustive, but for everything else
+
+variable {{  }} # Variables. Not all languages allow easy identification (and thus markup) of these
+
+variable.parameter {{  }} # When the variable is declared as the parameter
+
+variable.language {{  }} # Reserved language variables, like this, super, self, etc
+
+variable.other {{  }} # Other variables, like $some_varaible

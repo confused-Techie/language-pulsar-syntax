@@ -1,41 +1,285 @@
-# TextMate tutorial: http://manual.macromates.com/en/language_grammars
-
-# Regex to convert keys to unquoted: '(include|match|captures|begin|end|beginCaptures|endCaptures|name|patterns|0|1|2|3|4|5|6|7|8|9|comment|fileTypes|scopeName|repository|contentName|firstLineMatch|foldingStartMarker|foldingStopMarker)':
-
-scopeName: 'source.pulsar-syntax' # <scope> should be a short, unique indicator for the language ("js", "php", "c", etc.)
-name: 'Pulsar Syntax' # The title that will show up in grammar selection and on your status bar.
-fileTypes: [ # An array of file extensions.
-  '.pulsar-syntax'
+scopeName: 'source.pulsar-syntax'
+name: 'Pulsar Syntax'
+fileTypes: [
+  'pulsar-syntax'
 ]
-firstLineMatch: '' # A regular expression that is matched against the first line of the document when Atom is trying to decide if the grammar is appropriate. Useful for shell scripts, mostly.
-foldingStartMarker: '' # A regular expression that checks for the start of a foldable area (such as `{`).
-foldingStopMarker: '' # A regular expression that checks for the end of a foldable area (such as `}`). If both folding markers are matched in the same line, there will be no foldable area.
-patterns: [ # An array of individual pattern declarations.
+
+patterns: [
   {
-    match: '\\bLanguage Pulsar Syntax\\b' # A regular expression that matches some content. Optional.
-    begin: '' # A regular expression that precedes the content. Optional.
-    end: '' # A regular expression that follows the content. Optional.
-    name: 'entity.other.pulsar-syntax' # A period-delimited list of classes that will be applied to the content identified by `match`. Optional.
-    contentName: '' # A period-delimited list of classes that will be applied to the content within `begin` and `end`. Optional.
-    captures: # An array of `name` designations for `match` expressions that capture multiple bits. Optional.
-      0: # Arrays start at zero. This one will catch the whole regex. 1+ will catch the capture groups.
-        name: '' # This should be self-explanatory by now.
-    beginCaptures: # An array of `name` designations for `begin` expressions that capture multiple bits. Optional.
-      0:
-        name: ''
-    endCaptures: # An array of `name` designations for `end` expressions that capture multiple bits. Optional.
-      0:
-        name: ''
-    include: '' # This can be a reference to another grammar (by scope name), the current grammar (with `$self`), or a rule from the grammar's repository (with `#<rule>`). Optional.
-    patterns: [] # This is where you can get tricky. When you have matched content, Atom will search within it for anything in the child array. You can have `patterns[]` within `patterns[]`, then throw an `include` in to jump to some other rule or refer back to the root of the grammar. If you are making a rule that captures a block that might contain other tags, you should refer back to the root. Optional, naturally.
+    match: '\\bLanguage Pulsar Syntax\\b'
+    name: 'keyword.control'
   }
   {
-    begin: '(\\bA Specific Token Name {{\\b)(}})'
-    beginCaptures:
-      0:
-        name: 'meta.block.start.pulsar-syntax' # First ()
-      1:
-        name: 'meta.block.start.pulsar-syntax' # Second ()
-    name: 'meta.block.start.pulsar-syntax'
+    match: '# [^\\n]*',
+    name: 'comment'
+  }
+
+  {
+    match: 'comment {{[^}\\n]*?}}'
+    name: 'comment'
+  }
+  {
+    match: 'comment.line {{[^}\\n]*?}}'
+    name: 'comment.line'
+  }
+  {
+    match: 'comment.line.double-slash {{[^}\\n]*?}}'
+    name: 'comment.line.double-slash'
+  }
+  {
+    match: 'comment.line.double-dash {{[^}\\n]*?}}'
+    name: 'comment.line.double-dash'
+  }
+  {
+    match: 'comment.line.number-sign {{[^}\\n]*?}}'
+    name: 'comment.line.number-sign'
+  }
+  {
+    match: 'comment.line.percentage {{[^}\\n]*?}}'
+    name: 'comment.line.percentage'
+  }
+  {
+    match: 'comment.block {{[^}\\n]*?}}'
+    name: 'comment.block'
+  }
+  {
+    match: 'comment.block.documentation {{[^}\\n]*?}}'
+    name: 'comment.block.documentation'
+  }
+  {
+    match: 'constant {{[^}\\n]*?}}'
+    name: 'constant'
+  }
+  {
+    match: 'constant.numeric {{[^}\\n]*?}}'
+    name: 'constant.numeric'
+  }
+  {
+    match: 'constant.character {{[^}\\n]*?}}'
+    name: 'constant.character'
+  }
+  {
+    match: 'constant.character.escape {{[^}\\n]*?}}'
+    name: 'constant.character.escape'
+  }
+  {
+    match: 'constant.language {{[^}\\n]*?}}'
+    name: 'constant.language'
+  }
+  {
+    match: 'constant.other {{[^}\\n]*?}}'
+    name: 'constant.other'
+  }
+  {
+    match: 'entity {{[^}\\n]*?}}'
+    name: 'entity'
+  }
+  {
+    match: 'entity.name {{[^}\\n]*?}}'
+    name: 'entity.name'
+  }
+  {
+    match: 'entity.name.function {{[^}\\n]*?}}'
+    name: 'entity.name.function'
+  }
+  {
+    match: 'entity.name.type {{[^}\\n]*?}}'
+    name: 'entity.name.type'
+  }
+  {
+    match: 'entity.name.tag {{[^}\\n]*?}}'
+    name: 'entity.name.tag'
+  }
+  {
+    match: 'entity.name.section {{[^}\\n]*?}}'
+    name: 'entity.name.section'
+  }
+  {
+    match: 'entity.other {{[^}\\n]*?}}'
+    name: 'entity.other'
+  }
+  {
+    match: 'entity.other.inherited-class {{[^}\\n]*?}}'
+    name: 'entity.other.inherited-class'
+  }
+  {
+    match: 'entity.other.attribute-name {{[^}\\n]*?}}'
+    name: 'entity.other.attribute-name'
+  }
+  {
+    match: 'invalid {{[^}\\n]*?}}'
+    name: 'invalid'
+  }
+  {
+    match: 'invalid.illegal {{[^}\\n]*?}}'
+    name: 'invalid.illegal'
+  }
+  {
+    match: 'invalid.deprecated {{[^}\\n]*?}}'
+    name: 'invalid.deprecated'
+  }
+  {
+    match: 'keyword {{[^}\\n]*?}}'
+    name: 'keyword'
+  }
+  {
+    match: 'keyword.control {{[^}\\n]*?}}'
+    name: 'keyword.control'
+  }
+  {
+    match: 'keyword.operator {{[^}\\n]*?}}'
+    name: 'keyword.operator'
+  }
+  {
+    match: 'keyword.other {{[^}\\n]*?}}'
+    name: 'keyword.other'
+  }
+  {
+    match: 'markup {{[^}\\n]*?}}'
+    name: 'markup'
+  }
+  {
+    match: 'markup.underline {{[^}\\n]*?}}'
+    name: 'markup.underline'
+  }
+  {
+    match: 'markup.underline.link {{[^}\\n]*?}}'
+    name: 'markup.underline.link'
+  }
+  {
+    match: 'markup.bold {{[^}\\n]*?}}'
+    name: 'markup.bold'
+  }
+  {
+    match: 'markup.heading {{[^}\\n]*?}}'
+    name: 'markup.heading'
+  }
+  {
+    match: 'markup.italic {{[^}\\n]*?}}'
+    name: 'markup.italic'
+  }
+  {
+    match: 'markup.list {{[^}\\n]*?}}'
+    name: 'markup.list'
+  }
+  {
+    match: 'markup.list.numbered {{[^}\\n]*?}}'
+    name: 'markup.list.numbered'
+  }
+  {
+    match: 'markup.list.unnumbered {{[^}\\n]*?}}'
+    name: 'markup.list.unnumbered'
+  }
+  {
+    match: 'markup.quote {{[^}\\n]*?}}'
+    name: 'markup.quote'
+  }
+  {
+    match: 'markup.raw {{[^}\\n]*?}}'
+    name: 'markup.raw'
+  }
+  {
+    match: 'markup.other {{[^}\\n]*?}}'
+    name: 'markup.other'
+  }
+  {
+    match: 'meta {{[^}\\n]*?}}'
+    name: 'meta'
+  }
+  {
+    match: 'storage {{[^}\\n]*?}}'
+    name: 'storage'
+  }
+  {
+    match: 'storage.type {{[^}\\n]*?}}'
+    name: 'storage.type'
+  }
+  {
+    match: 'storage.modifier {{[^}\\n]*?}}'
+    name: 'storage.modifier'
+  }
+  {
+    match: 'string {{[^}\\n]*?}}'
+    name: 'string'
+  }
+  {
+    match: 'string.quoted {{[^}\\n]*?}}'
+    name: 'string.quoted'
+  }
+  {
+    match: 'string.quoted.single {{[^}\\n]*?}}'
+    name: 'string.quoted.single'
+  }
+  {
+    match: 'string.quoted.double {{[^}\\n]*?}}'
+    name: 'string.quoted.double'
+  }
+  {
+    match: 'string.quoted.triple {{[^}\\n]*?}}'
+    name: 'string.quoted.triple'
+  }
+  {
+    match: 'string.quoted.other {{[^}\\n]*?}}'
+    name: 'string.quoted.other'
+  }
+  {
+    match: 'string.unquoted {{[^}\\n]*?}}'
+    name: 'string.unquoted'
+  }
+  {
+    match: 'string.interpolated {{[^}\\n]*?}}'
+    name: 'string.interpolated'
+  }
+  {
+    match: 'string.regexp {{[^}\\n]*?}}'
+    name: 'string.regexp'
+  }
+  {
+    match: 'string.other {{[^}\\n]*?}}'
+    name: 'string.other'
+  }
+  {
+    match: 'support {{[^}\\n]*?}}'
+    name: 'support'
+  }
+  {
+    match: 'support.function {{[^}\\n]*?}}'
+    name: 'support.function'
+  }
+  {
+    match: 'support.class {{[^}\\n]*?}}'
+    name: 'support.class'
+  }
+  {
+    match: 'support.type {{[^}\\n]*?}}'
+    name: 'support.type'
+  }
+  {
+    match: 'support.constant {{[^}\\n]*?}}'
+    name: 'support.constant'
+  }
+  {
+    match: 'support.variable {{[^}\\n]*?}}'
+    name: 'support.variable'
+  }
+  {
+    match: 'support.other {{[^}\\n]*?}}'
+    name: 'support.other'
+  }
+  {
+    match: 'variable {{[^}\\n]*?}}'
+    name: 'variable'
+  }
+  {
+    match: 'variable.parameter {{[^}\\n]*?}}'
+    name: 'variable.parameter'
+  }
+  {
+    match: 'variable.language {{[^}\\n]*?}}'
+    name: 'variable.language'
+  }
+  {
+    match: 'variable.other {{[^}\\n]*?}}'
+    name: 'variable.other'
   }
 ]
